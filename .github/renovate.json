@@ -1,0 +1,19 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "maven"
+      ],
+      "registryUrls": [
+        "https://repo.maven.apache.org/maven2/",
+        "https://dl.google.com/dl/android/maven2/",
+        "https://plugins.gradle.org/m2/"
+      ]
+    }
+  ],
+  "semanticCommits": "disabled"
+}
