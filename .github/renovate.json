@@ -3,17 +3,17 @@
   "extends": [
     "config:recommended"
   ],
+  "semanticCommits": "disabled",
   "packageRules": [
     {
-      "matchDatasources": [
-        "maven"
+      "matchUpdateTypes": [
+        "major",
+        "minor",
+        "patch",
+        "pin",
+        "digest"
       ],
-      "registryUrls": [
-        "https://repo.maven.apache.org/maven2/",
-        "https://dl.google.com/dl/android/maven2/",
-        "https://plugins.gradle.org/m2/"
-      ]
+      "automerge": true
     }
-  ],
-  "semanticCommits": "disabled"
+  ]
 }
