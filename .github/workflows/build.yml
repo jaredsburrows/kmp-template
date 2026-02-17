@@ -8,25 +8,18 @@ on:
     types: [ opened, labeled, unlabeled, synchronize ]
 
 env:
-  GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.daemon=false -Dkotlin.incremental=false"
+  GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx8g -XX:+UseG1GC"
   JAVA_VERSION: 25
   ANDROID_API_LEVEL: 36
 
 jobs:
-  build:
-    name: Build
-    runs-on: macos-latest
-
-    permissions:
-      checks: write
-      pull-requests: write
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Project
         uses: actions/checkout@v6.0.2
-
-      - name: Validate Gradle Wrapper
-        uses: gradle/actions/wrapper-validation@v5
 
       - name: Configure JDK ${{ env.JAVA_VERSION }}
         uses: actions/setup-java@v5.2.0
@@ -36,11 +29,74 @@ jobs:
           cache: gradle
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v5
+        uses: gradle/actions/setup-gradle@v5.0.1
       - run: ./gradlew --version
 
       - name: Run Ktlint Check On All Sources
         run: ./gradlew ktlintCheck -s
 
-      - name: Build All
-        run: ./gradlew build -s
+  android:
+    name: Android Build
+    needs: lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v6.0.2
+
+      - name: Configure JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v5.2.0
+        with:
+          distribution: temurin
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: gradle
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v5.0.1
+
+      - name: Build Android
+        run: ./gradlew :androidApp:assembleDebug :androidApp:testDebugUnitTest -s
+
+  ios:
+    name: iOS Build
+    needs: lint
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v6.0.2
+
+      - name: Configure JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v5.2.0
+        with:
+          distribution: temurin
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: gradle
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v5.0.1
+
+      - name: Build iOS
+        run: ./gradlew :shared:compileKotlinIosArm64 :shared:compileKotlinIosSimulatorArm64 -s
+
+  web:
+    name: Web Build
+    needs: lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v6.0.2
+
+      - name: Configure JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v5.2.0
+        with:
+          distribution: temurin
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: gradle
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v5.0.1
+
+      - name: Build Web
+        run: ./gradlew :webApp:compileKotlinJs :webApp:compileKotlinWasmJs -s

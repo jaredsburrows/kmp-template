@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.daemon=false -Dkotlin.incremental=false"
+  GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g -XX:+UseG1GC"
   JAVA_VERSION: 25
 
 permissions:
@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   dependency-submission:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Project
@@ -27,4 +27,4 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Generate and submit dependency graph
-        uses: gradle/actions/dependency-submission@v5
+        uses: gradle/actions/dependency-submission@v5.0.1
