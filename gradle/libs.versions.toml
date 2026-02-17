@@ -1,6 +1,6 @@
 [versions]
 agp = "9.0.1"
-android-min-sdk = "30"
+android-min-sdk = "31"
 android-max-sdk = "36"
 androidx-activity = "1.12.4"
 androidx-core = "1.17.0"
