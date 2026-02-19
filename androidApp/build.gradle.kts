@@ -28,6 +28,10 @@ android {
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
 
+  androidResources {
+    localeFilters += listOf("en")
+  }
+
   lint {
     abortOnError = false
     checkAllWarnings = true
@@ -53,6 +57,11 @@ android {
   }
 
   buildTypes {
+    debug {
+      applicationIdSuffix = ".debug"
+      versionNameSuffix = "-dev"
+    }
+
     release {
       isMinifyEnabled = true
       isShrinkResources = true
@@ -60,6 +69,20 @@ android {
         getDefaultProguardFile("proguard-android-optimize.txt"),
         "proguard-rules.pro",
       )
+    }
+
+    testOptions {
+      unitTests {
+        isReturnDefaultValues = true
+        isIncludeAndroidResources = true
+      }
+      animationsDisabled = true
+      execution = "ANDROIDX_TEST_ORCHESTRATOR"
+    }
+
+    dependenciesInfo {
+      includeInApk = false
+      includeInBundle = false
     }
   }
 

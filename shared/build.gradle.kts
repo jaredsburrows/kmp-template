@@ -22,6 +22,20 @@ kotlin {
       libs.versions.android.min.sdk
         .get()
         .toInt()
+
+    // Make sure composeResources/drawable is included in the APK
+    androidResources {
+      enable = true
+    }
+
+    withHostTest {
+      isIncludeAndroidResources = true
+    }
+
+    withDeviceTest {
+      instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+      execution = "HOST"
+    }
   }
 
   // iOS
