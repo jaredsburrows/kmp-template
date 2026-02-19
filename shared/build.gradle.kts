@@ -22,6 +22,19 @@ kotlin {
       libs.versions.android.min.sdk
         .get()
         .toInt()
+
+    androidResources {
+      enable = true
+    }
+
+    withHostTest {
+      isIncludeAndroidResources = true
+    }
+
+    withDeviceTest {
+      instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+      execution = "HOST"
+    }
   }
 
   // iOS
