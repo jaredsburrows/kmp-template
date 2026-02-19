@@ -23,6 +23,7 @@ kotlin {
         .get()
         .toInt()
 
+    // Make sure composeResources/drawable is included in the APK
     androidResources {
       enable = true
     }
