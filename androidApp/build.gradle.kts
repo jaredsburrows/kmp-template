@@ -46,7 +46,6 @@ android {
           "**/*.version",
           "**/kotlin/**",
           "**/*.txt",
-          "**/*.xml",
           "**/*.properties",
         )
     }
