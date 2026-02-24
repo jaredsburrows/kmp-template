@@ -29,7 +29,7 @@ jobs:
           cache: gradle
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v5.0.1
+        uses: gradle/actions/setup-gradle@v5.0.2
       - run: ./gradlew --version
 
       - name: Run Ktlint Check On All Sources
@@ -52,7 +52,7 @@ jobs:
           cache: gradle
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v5.0.1
+        uses: gradle/actions/setup-gradle@v5.0.2
 
       - name: Build Android
         run: ./gradlew :androidApp:assembleDebug :androidApp:testDebugUnitTest -s
@@ -74,7 +74,7 @@ jobs:
           cache: gradle
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v5.0.1
+        uses: gradle/actions/setup-gradle@v5.0.2
 
       - name: Build iOS
         run: ./gradlew :shared:compileKotlinIosArm64 :shared:compileKotlinIosSimulatorArm64 -s
@@ -96,7 +96,7 @@ jobs:
           cache: gradle
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v5.0.1
+        uses: gradle/actions/setup-gradle@v5.0.2
 
       - name: Build Web
         run: ./gradlew :webApp:compileKotlinJs :webApp:compileKotlinWasmJs -s
