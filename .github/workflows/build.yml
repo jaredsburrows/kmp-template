@@ -128,7 +128,7 @@ jobs:
 
     steps:
       - name: Download Distribution Artifact
-        uses: actions/download-artifact@v8.0.0
+        uses: actions/download-artifact@v8.0.1
         with:
           name: wasmjs-dist
           path: dist
