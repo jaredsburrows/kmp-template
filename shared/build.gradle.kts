@@ -74,5 +74,11 @@ kotlin {
     commonTest.dependencies {
       api(libs.kotlin.test)
     }
+    create("nonAndroidMain") {
+      dependsOn(commonMain.get())
+      iosMain.get().dependsOn(this)
+      jsMain.get().dependsOn(this)
+      wasmJsMain.get().dependsOn(this)
+    }
   }
 }

@@ -445,3 +445,6 @@ obj/
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/kotlin,android,androidstudio,intellij+all,macos,xcode,java,swift,objective-c
+
+# ai
+.firebender/
