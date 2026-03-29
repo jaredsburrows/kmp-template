@@ -18,6 +18,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.kmptemplate.app.ui.theme.GifTheme
 import kmptemplate.shared.generated.resources.Res
 import kmptemplate.shared.generated.resources.compose_multiplatform
 import org.jetbrains.compose.resources.painterResource
@@ -25,7 +26,7 @@ import org.jetbrains.compose.resources.painterResource
 @Composable
 @Preview
 fun App() {
-  MaterialTheme {
+  GifTheme {
     var showContent by remember { mutableStateOf(false) }
     Column(
       modifier =
