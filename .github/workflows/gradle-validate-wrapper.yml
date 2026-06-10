@@ -16,4 +16,4 @@ jobs:
         uses: actions/checkout@v6.0.3
 
       - name: Validate Gradle Wrapper
-        uses: gradle/actions/wrapper-validation@v6.1.0
+        uses: gradle/actions/wrapper-validation@v6.1.1
