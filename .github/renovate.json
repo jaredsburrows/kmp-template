@@ -4,6 +4,17 @@
     "config:recommended"
   ],
   "semanticCommits": "disabled",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "schedule": [
+      "before 4am on monday"
+    ]
+  },
+  "vulnerabilityAlerts": {
+    "automerge": true
+  },
+  "osvVulnerabilityAlerts": true,
   "packageRules": [
     {
       "matchUpdateTypes": [
