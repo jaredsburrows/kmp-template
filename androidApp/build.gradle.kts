@@ -22,6 +22,10 @@ android {
       libs.versions.android.min.sdk
         .get()
         .toInt()
+    targetSdk =
+      libs.versions.android.max.sdk
+        .get()
+        .toInt()
     versionCode = 1 // You can add this code into libs.versions.toml file.
     versionName = "1.0" // You can add this code into libs.versions.toml file.
 
