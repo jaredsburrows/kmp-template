@@ -6,7 +6,7 @@ androidx-activity = "1.13.0"
 androidx-core = "1.19.0"
 androidx-lifecycle = "2.11.0"
 androidx-testExt = "1.3.0"
-composeMultiplatform = "1.12.0"
+composeMultiplatform = "1.12.1"
 # Material3 ships on its own version line, decoupled from composeMultiplatform.
 # Keep this in sync with `composeMaterial3Version` in the Compose plugin of the
 # matching composeMultiplatform release.
